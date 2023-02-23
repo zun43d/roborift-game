@@ -1,0 +1,79 @@
+@tailwind base;
+
+html {
+	@apply bg-zinc-900 text-white;
+}
+
+@tailwind components;
+
+.btn-normal {
+	@apply hover:bg-gray-900/75 hover:text-orange-300 px-5 py-3 rounded-xl transition duration-200 ease-in-out active:scale-95;
+}
+
+.btn-filled {
+	@apply text-orange-50 bg-orange-600 hover:bg-orange-500 hover:text-orange-100 transition ease-in-out duration-300 active:scale-95 py-3 px-5 rounded-xl;
+}
+
+.btn-colored {
+	@apply text-orange-300 bg-slate-900/75 hover:shadow-md hover:shadow-orange-300/10 transition ease-in-out duration-300 active:scale-95 py-3 px-5 rounded-xl;
+}
+
+.btn-duotone {
+	@apply font-merriweather font-semibold px-8 text-lg flex items-center bg-orange-900/30 text-orange-300 py-4 rounded-xl transition duration-200 ease-in-out active:scale-95;
+}
+
+.link {
+	@apply text-orange-300 font-semibold;
+}
+
+.btn-trans {
+	@apply inline-flex items-center justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white;
+}
+
+.btn-trans-hover {
+	@apply hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75;
+}
+
+.select-card {
+	@apply flex flex-col items-center justify-center cursor-pointer w-52 h-52 sm:w-72 sm:h-96 p-3 bg-gray-800/50 hover:bg-gray-800/80 border border-gray-700 hover:border-gray-600 transition duration-200 rounded-md text-white text-2xl;
+}
+
+.modal {
+	@apply text-white fixed w-7/12 min-w-max max-w-5xl h-4/5 bg-black/60 overflow-y-auto;
+	/* top: '50%',
+						left: '50%',
+						transform: 'translate(-50%,-50%)',
+						width: '1100px',
+						height: '800px',
+						borderRadius: '8px',
+						borderColor: '#9a3412',
+						backgroundColor: '#1e293b',
+						color: 'white', */
+}
+
+@tailwind utilities;
+
+.disabled {
+	@apply cursor-not-allowed opacity-70 /*pointer-events-none*/;
+}
+
+.scrollbar::-webkit-scrollbar {
+	@apply w-0 h-3;
+	/* width: 20px; */
+	/* height: 20px; */
+}
+
+.scrollbar::-webkit-scrollbar-track {
+	@apply rounded-full;
+	/* background: #f7f4ed; */
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+	@apply bg-amber-900 rounded-full mx-1 w-4;
+	/* border-radius: 100vh; */
+	/* border: 3px solid #f6f7ed; */
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+	@apply bg-amber-800/70;
+}
