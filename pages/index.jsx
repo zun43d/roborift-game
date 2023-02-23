@@ -29,7 +29,7 @@ export default function Home({ ual }) {
 				<div className="flex flex-col items-center w-full h-full py-40">
 					<h1 className="text-5xl font-cinzel font-bold pb-5">RoboRift</h1>
 					<div className="flex flex-col justify-center items-center h-full">
-						<div className="flex flex-col justify-center items-center w-96 bg-gray-700 rounded-xl py-8 px-10">
+						<div className="flex flex-col justify-center items-center w-96 bg-gray-700/70 rounded-xl py-8 px-10">
 							<h3 className="text-3xl font-semibold">No Trespassing!!!</h3>
 							<p className="text-sm font-merriweather pt-2 pb-6">
 								Authenticate youself to get access.
@@ -37,10 +37,10 @@ export default function Home({ ual }) {
 							{!ual.activeUser && (
 								<button
 									onClick={walletLogin}
-									className="my-3 bg-blue-500 px-6 py-4 rounded-xl font-bold"
+									className="my-3 bg-indigo-500 px-6 py-4 rounded-xl font-bold shadow-lg active:scale-95 duration-150"
 								>
 									{/* Sign in with{' '} */}
-									Sign in options
+									Open Authorizer
 								</button>
 							)}
 							{ual.activeUser && (

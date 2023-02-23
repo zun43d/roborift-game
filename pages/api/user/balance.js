@@ -13,11 +13,12 @@ export default async function handler(req, res) {
 		// fetch user data from the blockchain
 
 		const response = await Promise.all([
-			rpc.get_currency_balance('wrecktiumtok', wallet, 'WTM'),
+			// rpc.get_currency_balance('wrecktiumtok', wallet, 'WTM'),
+			null,
 			rpc.get_table_rows({
 				json: true,
-				code: 'wrecktmining',
-				scope: 'wrecktmining',
+				code: 'robostakings',
+				scope: 'robostakings',
 				table: 'wallets',
 				key_type: 'i64',
 				index_position: 1,
@@ -39,9 +40,10 @@ export default async function handler(req, res) {
 
 		const balances = () => {
 			const tokens = []
-			const initGameTok = ['0.0000 IRON', '0.0000 DM', '0.0000 WRM']
+			const initGameTok = ['0.0000 RX']
 
-			tokens.push(response[0].length > 0 ? response[0][0] : '0.0000 WTM')
+			// tokens.push(response[0].length > 0 ? response[0][0] : '0.0000 RA')
+			tokens.push('0.0000 RA')
 			response[1].rows.length > 0
 				? response[1].rows[0].resource_tokens.forEach((token) =>
 						tokens.push(token)

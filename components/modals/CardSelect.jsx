@@ -36,7 +36,9 @@ export default function CardSelect({
 		>
 			<div className="my-10">
 				<h2 className="text-4xl font-cinzel text-center font-semibold">
-					{type == 'land' ? 'Choose a land' : 'Select your preferred tool'}
+					{type == 'servers'
+						? 'Choose a servers'
+						: 'Select your preferred tool'}
 				</h2>
 				{type === 'tool' && (
 					<p className="text-slate-400 text-center mt-3">
@@ -48,8 +50,10 @@ export default function CardSelect({
 			<div className="grid grid-cols-3 items-center justify-items-center gap-y-8 mx-10">
 				{nfts?.length > 0 ? (
 					nfts.map((nft) => {
+						console.log(nft)
 						const img = getImage(nft)
 						const name = nft.template.immutable_data.name
+
 						return (
 							<div
 								key={nft.asset_id}
@@ -83,8 +87,8 @@ export default function CardSelect({
 							</div>
 						)
 					})
-				) : type === 'land' ? (
-					<p className="text-center">No lands available.</p>
+				) : type === 'servers' ? (
+					<p className="text-center">No servers available.</p>
 				) : (
 					<p className="text-center col-span-3 h-full flex items-center justify-center">
 						Looks like you don&apos;t have any staked tool!

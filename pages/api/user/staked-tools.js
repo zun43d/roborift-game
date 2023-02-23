@@ -9,6 +9,8 @@ const api =
 const rpc = new JsonRpc(api, { fetch })
 const atomicApi = process.env.NEXT_PUBLIC_ASSET_API_ENDPOINT
 
+const collectionName = 'roboriftalpx'
+
 export default async function handler(req, res) {
 	if (req.method === 'GET') {
 		const { wallet } = req.query
@@ -41,7 +43,7 @@ export default async function handler(req, res) {
 
 		const { rows: stakedAssets } = await rpc.get_table_rows({
 			json: true,
-			code: 'wrecktmining',
+			code: 'robostakings',
 			scope: wallet,
 			table: 'tools',
 			limit: 50,
@@ -54,7 +56,7 @@ export default async function handler(req, res) {
 		const { data: stakedTools } =
 			stakedAssetIds.length > 0
 				? await fetch(
-						`${atomicApi}/atomicassets/v1/assets?collection_name=wreckedwrlds&ids=${stakedAssetIds}&page=1&limit=100&order=desc&sort=updated`
+						`${atomicApi}/atomicassets/v1/assets?collection_name=${collectionName}&ids=${stakedAssetIds}&page=1&limit=100&order=desc&sort=updated`
 				  ).then((res) => res.json())
 				: { data: [] }
 

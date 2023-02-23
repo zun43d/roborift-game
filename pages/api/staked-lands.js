@@ -13,8 +13,8 @@ export default async function handler(req, res) {
 
 		const { rows: assets } = await rpc.get_table_rows({
 			json: true,
-			code: 'wrecktmining',
-			scope: 'wrecktmining',
+			code: 'robostakings',
+			scope: 'robostakings',
 			table: 'lands',
 			key_type: 'i64',
 			index_position: 1,

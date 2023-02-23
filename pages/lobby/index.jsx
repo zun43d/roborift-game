@@ -6,6 +6,10 @@ import Navbar from '../../components/Navbar'
 import useSWR, { useSWRConfig } from 'swr'
 import Image from 'next/image'
 
+import fetcher from '../../utils/fetcher'
+import { getImage } from '../../utils/getImage'
+import stake from '../../lib/stake'
+
 export default function Lobby({ ual }) {
 	const router = useRouter()
 
@@ -26,8 +30,9 @@ export default function Lobby({ ual }) {
 
 	const { data, error } = useSWR(
 		`${assetsAPI}/atomicassets/v1/assets?collection_name=roboriftalpx&owner=${userName}&page=1&limit=100&order=desc&sort=asset_id`,
-		{ fetch }
+		{ fetcher }
 	)
+	console.log(data)
 
 	const inventory = data?.data || []
 
@@ -53,7 +58,7 @@ export default function Lobby({ ual }) {
 							inventory.map((item) => (
 								<div
 									key={item.asset_id}
-									className="bg-amber-900/20 border border-amber-800 rounded-lg px-4 py-4"
+									className="bg-gray-900/20 border border-gray-800 rounded-lg px-4 py-4"
 								>
 									<div className="flex flex-col items-center justify-between h-full">
 										<Image
@@ -66,13 +71,13 @@ export default function Lobby({ ual }) {
 										{/* <p className="text-white text-center mt-3">
 											{item.data.name ? item.data.name : 'No Name'}
 										</p> */}
-										<div className="flex items-center justify-center w-full">
+										<div className="flex items-center justify-between w-full">
 											<p className="text-white font-semibold text-center">
 												{item.data.name ? item.data.name : 'No Name'}
 											</p>
-											{item.schema.schema_name === 'tools' && (
+											{item.schema.schema_name !== 'servers' && (
 												<button
-													className="btn-colored rounded-lg py-2 px-4 text-sm"
+													className="bg-gray-500 hover:bg-gray-700 rounded-lg py-2 px-4 text-sm duration-300"
 													onClick={() => handleStake(item.asset_id)}
 												>
 													Stake
