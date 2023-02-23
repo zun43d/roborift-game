@@ -39,9 +39,11 @@ export default function Staking({ ual }) {
 						<h2 className="text-center font-bold text-5xl py-3">
 							Flash Drive Staking
 						</h2>
-						<p className="text-gray-400">
+						<p className="text-gray-400 max-w-3xl">
 							Claim your rewards from the staked flash drive and collect
-							resources.
+							resources. To prevent data corruption, resources from flash drives
+							can only be claimed after a certain cooldown which the drive was
+							assigned with.
 						</p>
 					</div>
 				</div>

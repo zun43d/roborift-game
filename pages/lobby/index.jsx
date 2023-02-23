@@ -28,11 +28,10 @@ export default function Lobby({ ual }) {
 
 	const assetsAPI = process.env.NEXT_PUBLIC_ASSET_API_ENDPOINT
 
-	const { data, error } = useSWR(
+	const { data, error, isLoading } = useSWR(
 		`${assetsAPI}/atomicassets/v1/assets?collection_name=roboriftalpx&owner=${userName}&page=1&limit=100&order=desc&sort=asset_id`,
 		{ fetcher }
 	)
-	console.log(data)
 
 	const inventory = data?.data || []
 
@@ -51,10 +50,19 @@ export default function Lobby({ ual }) {
 
 			<Navbar ual={ual} />
 			<main className="max-w-7xl mx-auto">
-				<div className="py-5 my-5">
-					<h2 className="text-center font-bold text-4xl">Inventory</h2>
+				<div className="mb-5">
+					<div className="py-10 border-b border-zinc-800">
+						<h2 className="font-bold text-5xl py-3">Inventory</h2>
+						<p className="text-gray-400 max-w-3xl">
+							Check all the items you have in your wallet from <b>RoboRift</b>.
+							You can stake the flash drives to server and collect resources
+							from them.
+						</p>
+					</div>
 					<div className="grid grid-cols-4 gap-4 w-full h-full my-10">
-						{inventory.length > 0 ? (
+						{isLoading ? (
+							<p className="text-center">Loading...</p>
+						) : inventory.length > 0 ? (
 							inventory.map((item) => (
 								<div
 									key={item.asset_id}

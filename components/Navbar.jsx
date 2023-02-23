@@ -21,11 +21,15 @@ export default function Navbar({ ual }) {
 	return (
 		<div className="bg-zinc-900 border-b border-zinc-800">
 			<div className="max-w-7xl flex h-24 justify-between items-center mx-auto">
-				<nav className="flex items-center font-bold">
-					<h1 className="font-extrabold text-2xl rounded-full border border-zinc-700 p-4 mr-10">
+				<nav className="flex items-center font-bold space-x-8">
+					<Link
+						href="/lobby"
+						className="font-extrabold text-2xl rounded-full border border-zinc-700 p-4 mr-3"
+					>
 						RR
-					</h1>
+					</Link>
 					<Link href="/lobby/staking">Staking Rewards</Link>
+					<Link href="https://utility.roborift.world/">Utilities</Link>
 				</nav>
 				<div className="flex">
 					<div className="flex gap-0.5">
