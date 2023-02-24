@@ -88,6 +88,7 @@ export default function Staking({ ual }) {
 		},
 		name: 'MegaCore Server',
 	}) // defined server
+	const [randomKey, setRandomKey] = useState(0)
 
 	const userName = ual.activeUser?.accountName
 
@@ -127,9 +128,11 @@ export default function Staking({ ual }) {
 	const handleMultiMine = async (activeUser, landAssetId, tools) => {
 		setIsCollecting(true)
 		const toolsIds = tools.map((tool) => tool.asset_id)
+		const key = () => Math.random() * 100000000
 		await mineMulti(activeUser, landAssetId, toolsIds)
 			.then((res) => {
 				setIsCollecting(false)
+				setRandomKey(key)
 
 				if (res.message) {
 					return cogoToast.warn(res.message)
@@ -249,7 +252,10 @@ export default function Staking({ ual }) {
 					</div>
 				)}
 				{page === 2 && (
-					<div className="flex flex-col items-center justify-center my-12 transition-all duration-200">
+					<div
+						className="flex flex-col items-center justify-center my-12 transition-all duration-200"
+						key={randomKey}
+					>
 						{!stakedTools ? (
 							<div className="w-full">
 								<p className="text-center animate-pulse">
