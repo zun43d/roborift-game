@@ -34,7 +34,7 @@ export default function Home({ ual }) {
 						<div className="flex flex-col justify-center items-center w-96 bg-gray-700/70 rounded-xl py-8 px-10">
 							<h3 className="text-3xl font-semibold">No Trespassing!!!</h3>
 							<p className="text-sm font-merriweather pt-2 pb-6">
-								Authenticate youself to get access.
+								Authenticate yourself to get access.
 							</p>
 							{!ual.activeUser && (
 								<button
