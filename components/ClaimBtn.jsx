@@ -1,3 +1,4 @@
+import cogoToast from 'cogo-toast'
 import { DateTime, Interval } from 'luxon'
 import { useEffect, useRef, useState } from 'react'
 import mine from '../lib/mine'
@@ -16,14 +17,14 @@ export default function ClaimBtn({ ual, currentTool, currentLand }) {
 				setIsMining(false)
 
 				if (res.message) {
-					return alert(res.message)
+					return cogoToast.warn(res.message)
 				}
 
-				res.transactionId && alert('Resources Collected.\n')
+				res.transactionId && cogoToast.success('Resources Collected!')
 			})
 			.catch((err) => {
 				setIsMining(false)
-				alert('Something went wrong!')
+				cogoToast.error('Something went wrong!')
 			})
 	}
 

@@ -8,6 +8,7 @@ import ClaimBtn from '../../components/ClaimBtn'
 import { useState } from 'react'
 import stake from '../../lib/stake'
 import mineMulti from '../../lib/mineMulti'
+import cogoToast from 'cogo-toast'
 
 export default function Staking({ ual }) {
 	const [page, setPage] = useState(1)
@@ -98,24 +99,30 @@ export default function Staking({ ual }) {
 
 	const assetsAPI = process.env.NEXT_PUBLIC_ASSET_API_ENDPOINT
 	const {
-		data: { data: unstakedTools },
+		data,
 		error,
 		isValidating: inventoryValidating,
 	} = useSWR(
 		`${assetsAPI}/atomicassets/v1/assets?collection_name=roboriftalpx&owner=${userName}&page=1&limit=100&order=desc&sort=asset_id`,
 		{ fetcher }
 	)
-	console.log('unstakedTools', unstakedTools)
+	const unstakedTools = data?.data
 
 	const ipfsAddr = process.env.NEXT_PUBLIC_ASSET_IMAGE_ENDPOINT
 	const serverImgHash = 'QmTkVuDawy2Xh5NrX3mGvbQPQ6JbaREUxn5Q2Y9qKyyphW'
 
 	const handleStake = async (assetId) =>
-		await stake(ual.activeUser, assetId).then(() =>
+		await stake(ual.activeUser, assetId).then((res) => {
+			if (res.message) {
+				return cogoToast.warn(res.message)
+			}
+
+			res.transactionId && cogoToast.success('Flash drive staked to server!')
+
 			mutate(
 				`${assetsAPI}/atomicassets/v1/assets?collection_name=roboriftalpx&owner=${userName}&page=1&limit=100&order=desc&sort=asset_id`
 			)
-		)
+		})
 
 	const handleMultiMine = async (activeUser, landAssetId, tools) => {
 		setIsCollecting(true)
@@ -125,14 +132,14 @@ export default function Staking({ ual }) {
 				setIsCollecting(false)
 
 				if (res.message) {
-					return alert(res.message)
+					return cogoToast.warn(res.message)
 				}
 
-				res.transactionId && alert('Resources Collected.\n')
+				res.transactionId && cogoToast.success('Resources Collected!')
 			})
 			.catch((err) => {
 				setIsCollecting(false)
-				alert('Something went wrong!')
+				cogoToast.error('Something went wrong!')
 			})
 	}
 
