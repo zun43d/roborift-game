@@ -25,9 +25,11 @@ export default function Home({ ual }) {
 				<title>Lobby Login | RoboRift</title>
 			</Head>
 
-			<div className="h-screen w-screen text-white">
+			<div className="h-screen w-screen text-white bg-main bg-no-repeat bg-cover bg-center">
 				<div className="flex flex-col items-center w-full h-full py-40">
-					<h1 className="text-5xl font-cinzel font-bold pb-5">RoboRift</h1>
+					<h1 className="text-5xl font-cinzel font-bold pb-5 drop-shadow-xl">
+						RoboRift
+					</h1>
 					<div className="flex flex-col justify-center items-center h-full">
 						<div className="flex flex-col justify-center items-center w-96 bg-gray-700/70 rounded-xl py-8 px-10">
 							<h3 className="text-3xl font-semibold">No Trespassing!!!</h3>

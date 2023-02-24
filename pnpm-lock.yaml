@@ -8,6 +8,7 @@ specifiers:
   '@headlessui/react': ^1.7.4
   atomicassets: ^1.5.1
   autoprefixer: ^10.4.13
+  cogo-toast: ^4.2.3
   eosjs: ^22.1.0
   eslint: 8.26.0
   eslint-config-next: 13.0.0
@@ -33,6 +34,7 @@ dependencies:
   '@fontsource/merriweather': 4.5.14
   '@headlessui/react': 1.7.11_biqbaboplfbrettd7655fr4n2y
   atomicassets: 1.5.1
+  cogo-toast: 4.2.3_biqbaboplfbrettd7655fr4n2y
   eosjs: 22.1.0
   luxon: 3.2.1
   next: 13.0.0_biqbaboplfbrettd7655fr4n2y
@@ -903,6 +905,17 @@ packages:
 
   /client-only/0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+    dev: false
+
+  /cogo-toast/4.2.3_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-Lp/lPk493MLtkgqHboVJXb5frvLJqUDpIqLh6uCMcNecw0/shikDG+DGsjvmPe5qmorRwxe+6JgfKobRrcvhZQ==}
+    peerDependencies:
+      prop-types: ^15.6.2
+      react: ^16.8.0
+      react-dom: ^16.8.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /collection-visit/1.0.0:

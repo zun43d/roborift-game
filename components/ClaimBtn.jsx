@@ -2,88 +2,12 @@ import { DateTime, Interval } from 'luxon'
 import { useEffect, useRef, useState } from 'react'
 import mine from '../lib/mine'
 
-export default function ClaimBtn({ ual, currentTool }) {
+export default function ClaimBtn({ ual, currentTool, currentLand }) {
 	const [cooldown, setCooldown] = useState(null)
 	const [isLoading, setIsLoading] = useState(false)
 	const intervalId = useRef(null)
 
 	const [isMining, setIsMining] = useState(false)
-
-	const [currentLand, setCurrentLand] = useState({
-		contract: 'atomicassets',
-		asset_id: '1099551158657',
-		owner: 'robostakings',
-		is_transferable: true,
-		is_burnable: true,
-		collection: {
-			collection_name: 'roboriftalpx',
-			name: 'RoboRift',
-			img: 'QmQWqZ9RHfPvarVhRkwWDe4WG3EdXQE9gyiqQALGQbAFki',
-			author: 'roborftadmin',
-			allow_notify: true,
-			authorized_accounts: ['roborftadmin'],
-			notify_accounts: [],
-			market_fee: 0.02,
-			created_at_block: '201696446',
-			created_at_time: '1676734672000',
-		},
-		schema: {
-			schema_name: 'servers',
-			format: [
-				{
-					name: 'name',
-					type: 'string',
-				},
-				{
-					name: 'img',
-					type: 'image',
-				},
-				{
-					name: 'video',
-					type: 'string',
-				},
-				{
-					name: 'rarity',
-					type: 'string',
-				},
-			],
-			created_at_block: '202561860',
-			created_at_time: '1677167837000',
-		},
-		template: {
-			template_id: '607915',
-			max_supply: '0',
-			is_transferable: true,
-			is_burnable: true,
-			issued_supply: '1',
-			immutable_data: {
-				img: 'QmTkVuDawy2Xh5NrX3mGvbQPQ6JbaREUxn5Q2Y9qKyyphW',
-				name: 'MegaCore Server',
-				rarity: 'epic',
-			},
-			created_at_time: '1677168000500',
-			created_at_block: '202562187',
-		},
-		mutable_data: {},
-		immutable_data: {},
-		template_mint: '1',
-		backed_tokens: [],
-		burned_by_account: null,
-		burned_at_block: null,
-		burned_at_time: null,
-		updated_at_block: '202572513',
-		updated_at_time: '1677173163500',
-		transferred_at_block: '202572513',
-		transferred_at_time: '1677173163500',
-		minted_at_block: '202572413',
-		minted_at_time: '1677173113500',
-		data: {
-			img: 'QmTkVuDawy2Xh5NrX3mGvbQPQ6JbaREUxn5Q2Y9qKyyphW',
-			name: 'MegaCore Server',
-			rarity: 'epic',
-		},
-		name: 'MegaCore Server',
-	}) // defined server
 
 	const handleMine = async (activeUser, landAssetId, toolAssetId) => {
 		setIsMining(true)
