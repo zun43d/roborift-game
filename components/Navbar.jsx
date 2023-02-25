@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
@@ -22,11 +23,13 @@ export default function Navbar({ ual }) {
 		<div className="bg-zinc-900 border-b border-zinc-800">
 			<div className="max-w-7xl flex h-24 justify-between items-center mx-auto">
 				<nav className="flex items-center font-bold space-x-8">
-					<Link
-						href="/lobby"
-						className="font-extrabold text-2xl rounded-full border border-zinc-700 p-4 mr-3"
-					>
-						RR
+					<Link href="/lobby" className="">
+						<Image
+							src="/logo-1.png"
+							alt="RoboRift Logo"
+							width={50}
+							height={50}
+						/>
 					</Link>
 					<Link href="/lobby/staking">Staking Rewards</Link>
 					<Link href="https://utility.roborift.world/">Utilities</Link>
