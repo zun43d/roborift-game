@@ -5,12 +5,15 @@ import Image from 'next/image'
 import fetcher from '../../utils/fetcher'
 import { getImage } from '../../utils/getImage'
 import ClaimBtn from '../../components/ClaimBtn'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import stake from '../../lib/stake'
 import mineMulti from '../../lib/mineMulti'
 import cogoToast from 'cogo-toast'
+import { useRouter } from 'next/router'
 
 export default function Staking({ ual }) {
+	const router = useRouter()
+
 	const [page, setPage] = useState(1)
 	const [isCollecting, setIsCollecting] = useState(false)
 	const [currentLand, setCurrentLand] = useState({
@@ -91,6 +94,13 @@ export default function Staking({ ual }) {
 	const [randomKey, setRandomKey] = useState(0)
 
 	const userName = ual.activeUser?.accountName
+
+	useEffect(() => {
+		// if no user logges in, redirect to login page using router
+		if (!ual.activeUser) {
+			router.push('/')
+		}
+	}, [ual])
 
 	// const { data: stakedLands } = useSWR('/api/staked-lands', { fetcher })
 	const { data: stakedTools, isValidating } = useSWR(
