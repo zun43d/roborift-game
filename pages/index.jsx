@@ -39,7 +39,7 @@ export default function Home({ ual }) {
 							{!ual.activeUser && (
 								<button
 									onClick={walletLogin}
-									className="my-3 bg-indigo-500 px-6 py-4 rounded-xl font-bold shadow-lg active:scale-95 duration-150"
+									className="my-3 bg-pink-500 px-6 py-4 rounded-xl font-bold shadow-lg active:scale-95 duration-150"
 								>
 									{/* Sign in with{' '} */}
 									Open Authorizer
