@@ -61,19 +61,22 @@ export default function ClaimBtn({ ual, currentTool, currentLand }) {
 			DateTime.fromJSDate(new Date(time), { zone: 'utc' })
 		).toDuration(['hours', 'minutes', 'seconds', 'milliseconds'])
 
-		const remain = {
-			hours: timeRemaining.hours,
-			minutes: timeRemaining.minutes,
-			seconds: timeRemaining.seconds,
-		}
+		const secondsRemaining = Interval.fromDateTimes(
+			DateTime.utc(),
+			DateTime.fromJSDate(new Date(time), { zone: 'utc' })
+		)
+			.toDuration(['seconds'])
+			.toObject().seconds
+
+		const remain = timeRemaining.toObject()
 
 		setCooldown(remain)
 		setIsLoading(false)
 
 		// update the UI with the time remaining
-		console.log(`Time remaining: ${timeRemaining.seconds} seconds`)
+		// console.log(`Time remaining: ${secondsRemaining} seconds`)
 
-		if (!timeRemaining.isValid || timeRemaining.seconds <= 0) {
+		if (!timeRemaining.isValid || secondsRemaining <= 0) {
 			clearInterval(intervalId.current)
 			setCooldown(null)
 			console.log("Time's Up!")
