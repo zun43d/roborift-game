@@ -2,6 +2,7 @@ import cogoToast from 'cogo-toast'
 import { DateTime, Interval } from 'luxon'
 import { useEffect, useRef, useState } from 'react'
 import mine from '../lib/mine'
+import { BsCircleFill } from 'react-icons/bs'
 
 export default function ClaimBtn({ ual, currentTool, currentLand }) {
 	const [cooldown, setCooldown] = useState(null)
@@ -86,26 +87,34 @@ export default function ClaimBtn({ ual, currentTool, currentLand }) {
 					Fetching...
 				</div>
 			) : cooldown ? (
-				<div className="flex flex-col justify-center items-center bg-gray-800/70 text-gray-300 rounded-xl px-3 pt-3 pb-2 w-full">
+				<div className="flex flex-col justify-center items-center bg-gray-800/70 text-gray-300 rounded-xl px-3 py-1.5 w-full">
 					<span className="text-lg text-center">
 						{cooldown.hours || '00'}:{cooldown.minutes || '00'}:
 						{cooldown.seconds || '00'}
 					</span>
 				</div>
 			) : (
-				<button
-					className="w-full rounded-xl bg-gray-500 text-white hover:bg-gray-600 duration-300 px-6 py-2 cursor-pointer"
-					disabled={isMining}
-					onClick={() =>
-						handleMine(
-							ual.activeUser,
-							currentLand.asset_id,
-							currentTool.asset_id
-						)
-					}
+				<div
+					className="w-full rounded-xl bg-gray-900 text-white duration-300 px-6 py-2"
+					// disabled={isMining}
+					// onClick={() =>
+					// 	handleMine(
+					// 		ual.activeUser,
+					// 		currentLand.asset_id,
+					// 		currentTool.asset_id
+					// 	)
+					// }
 				>
-					{isMining ? 'Receiving...' : 'Get Resources'}
-				</button>
+					{/* {isMining ? 'Receiving...' : 'Get Resources'} */}
+					{isMining ? (
+						'Receiving...'
+					) : (
+						<span className="flex justify-center items-center gap-2">
+							<BsCircleFill className="text-green-500" size={8} />
+							Ready
+						</span>
+					)}
+				</div>
 			)}
 		</>
 	)
