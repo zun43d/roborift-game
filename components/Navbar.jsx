@@ -3,9 +3,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import fetcher from '../utils/fetcher'
-import { CgMenuRight } from 'react-icons/cg'
+import { CgMenuRight, CgClose } from 'react-icons/cg'
 import { useState } from 'react'
-import { RxCross2 } from 'react-icons/rx'
 
 export default function Navbar({ ual }) {
 	const router = useRouter()
@@ -73,7 +72,7 @@ export default function Navbar({ ual }) {
 							onClick={() => setNavOpen(false)}
 							className="absolute top-3 right-3 text-xl p-3"
 						>
-							<RxCross2 />
+							<CgClose />
 						</span>
 						<h5 className="text-zinc-400 font-bold text-sm mb-2">Balances</h5>
 						<div className="flex flex-col gap-0.5">
