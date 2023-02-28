@@ -31,7 +31,7 @@ export default function Home({ ual }) {
 						RoboRift
 					</h1>
 					<div className="flex flex-col justify-center items-center h-full">
-						<div className="flex flex-col justify-center items-center w-96 bg-gray-700/70 rounded-xl py-8 px-10">
+						<div className="flex flex-col justify-center items-center bg-zinc-700/90 rounded-xl py-6 px-12">
 							<h3 className="text-3xl font-semibold">No Trespassing!!!</h3>
 							<p className="text-sm font-merriweather pt-2 pb-6">
 								Authenticate yourself to get access.
@@ -54,7 +54,7 @@ export default function Home({ ual }) {
 								</>
 							)}
 							<a
-								href="#"
+								href="https://roborift.world/"
 								className="text-sm font-semibold font-merriweather my-8 hover:text-blue-300 transition duration-200 ease-in-out active:scale-95"
 							>
 								Read more about us &gt;

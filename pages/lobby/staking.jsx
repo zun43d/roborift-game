@@ -178,7 +178,7 @@ export default function Staking({ ual }) {
 
 			<Navbar ual={ual} />
 			<main className="max-w-7xl mx-auto mb-5">
-				<div className="flex justify-start items-center py-10 border-b border-zinc-800">
+				<div className="flex flex-col md:flex-row justify-start items-center py-10 border-b border-zinc-800">
 					<div className="flex flex-col justify-center items-center w-52 bg-gray-800/70 rounded-xl border border-gray-700 px-3 py-3">
 						<Image
 							src={`${ipfsAddr}/${serverImgHash}`}
@@ -189,11 +189,11 @@ export default function Staking({ ual }) {
 						/>
 						<h3 className="font-semibold text-center py-3">MegaCore Server</h3>
 					</div>
-					<div className="px-8 py-2 flex justify-start flex-col items-start">
-						<h2 className="text-center font-bold text-5xl py-3">
+					<div className="px-8 py-2 flex justify-center md:justify-start flex-col items-center md:items-start">
+						<h2 className="leading-tight text-center font-bold text-4xl md:text-5xl py-4 md:py-3">
 							Flash Drive Staking
 						</h2>
-						<p className="text-gray-400 max-w-3xl">
+						<p className="text-center md:text-left text-gray-400 max-w-3xl">
 							Claim your rewards from the staked flash drive and collect
 							resources. To prevent data corruption, resources from flash drives
 							can only be claimed after a certain cooldown which the drive was
@@ -230,7 +230,7 @@ export default function Staking({ ual }) {
 								</p>
 							</div>
 						) : (
-							<div className="grid grid-cols-4 justify-items-center gap-8 mb-10">
+							<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-8 mb-10 mx-10">
 								{unstakedTools?.length > 0 ? (
 									unstakedTools.map((tool, i) => (
 										<div
@@ -277,7 +277,7 @@ export default function Staking({ ual }) {
 				)}
 				{page === 2 && (
 					<div
-						className="flex flex-col items-center justify-center my-12 transition-all duration-200"
+						className="flex flex-col items-center justify-center my-12 transition-all duration-200 mx-5"
 						key={randomKey}
 					>
 						{!stakedTools ? (
@@ -288,12 +288,12 @@ export default function Staking({ ual }) {
 							</div>
 						) : stakedTools?.length > 0 ? (
 							<>
-								<div className="flex items-center justify-between w-full bg-zinc-800 border border-zinc-700/80 mb-8 rounded-xl px-5 py-3">
-									<div className="">
+								<div className="flex flex-col md:flex-row items-center justify-between w-10/12 md:w-full bg-zinc-800 border border-zinc-700/80 mb-8 rounded-xl px-5 py-4 md:py-3">
+									<div className="mb-5 md:mb-0">
 										<h4 className="font-bold">
 											Get all of the available resources in one click.
 										</h4>
-										<p className="text-sm text-gray-400">
+										<p className="text-sm text-gray-400 pt-2 md:pt-0">
 											Remember, this button will only work if none of the tools
 											are on cooldown.
 										</p>
@@ -311,7 +311,7 @@ export default function Staking({ ual }) {
 										Collect all resources
 									</button>
 								</div>
-								<div className="grid grid-cols-4 justify-items-center gap-8 mb-10">
+								<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center gap-8 mb-10 mx-10">
 									{stakedTools.map((tool, i) => (
 										<div
 											key={tool.asset_id}
