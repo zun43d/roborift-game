@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
     "@eosdacio/ual-wax": "^1.7.0",
     "@fontsource/cinzel": "^4.5.9",
     "@fontsource/inter": "^4.5.14",
     "@fontsource/merriweather": "^4.5.14",
     "@headlessui/react": "^1.7.4",
+    "@mantine/core": "^6.0.2",
+    "@mantine/hooks": "^6.0.2",
+    "@mantine/modals": "^6.0.2",
     "atomicassets": "^1.5.1",
     "cogo-toast": "^4.2.3",
     "eosjs": "^22.1.0",

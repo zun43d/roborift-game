@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
 		// fetch user data from the blockchain
 
-		const response = await Promise.all([
+		const resources = await Promise.all([
 			// rpc.get_currency_balance('wrecktiumtok', wallet, 'WTM'),
 			null,
 			rpc.get_table_rows({
@@ -29,23 +29,23 @@ export default async function handler(req, res) {
 			}),
 		])
 
-		// const response = await rpc
-		// 	.get_currency_balance('wrecktiumtok', wallet, 'WTM')
-		// 	.then((wtm) => {
-		// 		return wtm
-		// 	})
-		// 	.catch((error) => {
-		// 		console.log(error)
-		// 	})
+		const balance = await rpc
+			.get_currency_balance('roborfttoken', wallet, 'RA')
+			.then((ra) => {
+				return ra
+			})
+			.catch((error) => {
+				console.log(error)
+			})
 
 		const balances = () => {
 			const tokens = []
 			const initGameTok = ['0.0000 RX']
 
-			// tokens.push(response[0].length > 0 ? response[0][0] : '0.0000 RA')
-			tokens.push('0.0000 RA')
-			response[1].rows.length > 0
-				? response[1].rows[0].resource_tokens.forEach((token) =>
+			tokens.push(balance[0].length > 0 ? balance[0] : '0.0000 RA')
+			// tokens.push('0.0000 RA')
+			resources[1].rows.length > 0
+				? resources[1].rows[0].resource_tokens.forEach((token) =>
 						tokens.push(token)
 				  )
 				: initGameTok.map((tok) => tokens.push(tok))

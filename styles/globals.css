@@ -4,7 +4,17 @@ html {
 	@apply bg-zinc-900 text-white;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
 @tailwind components;
+
+.btn {
+	@apply px-4 py-2 rounded-lg bg-zinc-500/50 ml-3 font-semibold text-sm;
+}
 
 .btn-normal {
 	@apply hover:bg-gray-900/75 hover:text-orange-300 px-5 py-3 rounded-xl transition duration-200 ease-in-out active:scale-95;

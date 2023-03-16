@@ -3,6 +3,8 @@ import 'regenerator-runtime/runtime'
 import '@fontsource/cinzel/800.css'
 import '@fontsource/merriweather'
 import '@fontsource/inter'
+import { MantineProvider } from '@mantine/core'
+import { ModalsProvider } from '@mantine/modals'
 
 import Script from 'next/script'
 import { UALProvider, withUAL } from 'ual-reactjs-renderer'
@@ -48,13 +50,17 @@ function MyApp({ Component, pageProps }) {
 		`}
 			</Script>
 
-			<UALProvider
-				chains={[myChain]}
-				authenticators={authenticators}
-				appName="My App"
-			>
-				<MyUALConsumer {...pageProps} />
-			</UALProvider>
+			<MantineProvider theme={{ colorScheme: 'dark' }}>
+				<UALProvider
+					chains={[myChain]}
+					authenticators={authenticators}
+					appName="My App"
+				>
+					<ModalsProvider>
+						<MyUALConsumer {...pageProps} />
+					</ModalsProvider>
+				</UALProvider>
+			</MantineProvider>
 		</>
 	)
 }

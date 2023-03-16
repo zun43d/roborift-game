@@ -6,9 +6,16 @@ import fetcher from '../utils/fetcher'
 import { CgMenuRight, CgClose } from 'react-icons/cg'
 import { useState } from 'react'
 
+import { Button, NumberInput, Text } from '@mantine/core'
+import { modals } from '@mantine/modals'
+import cogoToast from 'cogo-toast'
+import exchange from '../lib/exchange'
+
 export default function Navbar({ ual }) {
 	const router = useRouter()
 	const [navOpen, setNavOpen] = useState(false)
+	const [exchangeAmt, setExchangeAmt] = useState(0)
+	const [loading, setLoading] = useState(false)
 
 	const userName = ual.activeUser?.accountName
 
@@ -22,8 +29,70 @@ export default function Navbar({ ual }) {
 		ual.logout()
 	}
 
+	const handleExchange = async (amt) => {
+		setLoading(true)
+		const res = await exchange(ual.activeUser, +amt)
+
+		if (res.message) {
+			modals.closeAll()
+			setLoading(false)
+			return cogoToast.warn(res.message)
+		}
+
+		res.transactionId && cogoToast.success('Transaction was successful')
+		modals.closeAll()
+		setLoading(false)
+	}
+
+	const openExchange = () =>
+		modals.open({
+			title: 'Resource Exchange',
+			children: (
+				<Text size="sm">
+					<div className="flex flex-col justify-center items-start px-3 py-2 border border-zinc-800 rounded-lg">
+						<p className="font-bold">Available Resources</p>
+						<p className="text-2xl ">{userBal ? userBal[1] : '...'}</p>
+					</div>
+					<div className="flex flex-col justify-center items-start px-3 py-2 border border-zinc-800 rounded-lg my-3">
+						<p className="font-bold">Exchange Rate</p>
+						<p className="text-2xl">1.0000 RA = 1000.0000 RX</p>
+					</div>
+					<hr className="border-zinc-700 my-6 w-32 mx-auto" />
+					<div className="flex flex-col justify-center items-start px-3 py-2 border border-zinc-800 rounded-lg my-3">
+						<p className="font-bold text-pink-600">
+							Enter withdraw amount (RA)
+						</p>
+						<div>
+							<input
+								type="number"
+								className="w-full bg-transparent rounded-lg px-0.5 py-0 my-0.5 text-2xl focus:outline-pink-700 focus-visible:outline-0 placeholder:text-zinc-400"
+								onChange={(e) => setExchangeAmt(+e.target.value)}
+								placeholder="0.0000 RA"
+								autoFocus={true}
+								// value="0.0000"
+							/>
+							<p className="text-zinc-600 text-xs font-semibold">
+								Enter the amount of RA you want to withdraw.
+							</p>
+						</div>
+					</div>
+
+					<Button
+						color="pink"
+						className="bg-pink-700"
+						fullWidth
+						radius={8}
+						onClick={() => handleExchange(exchangeAmt)}
+						loading={loading}
+					>
+						Confirm
+					</Button>
+				</Text>
+			),
+		})
+
 	return (
-		<div className="bg-zinc-900 border-b border-zinc-800">
+		<div className="bg-zinc-900 border-b border-zinc-800 border-t-4 border-t-pink-600">
 			<div className="max-w-7xl flex h-16 md:h-24 justify-between items-center mx-auto px-5">
 				<nav className="flex items-center text-sm md:text-base font-bold space-x-4 md:space-x-8">
 					<Link href="/lobby" className="w-8 md:w-auto">
@@ -39,19 +108,19 @@ export default function Navbar({ ual }) {
 				</nav>
 				<div className="hidden md:flex">
 					<div className="flex gap-0.5">
-						<div className="bg-zinc-500/50 px-3 py-1 rounded-l-full">
+						<div className="bg-zinc-500/50 px-3 py-1.5 rounded-l-lg">
 							<span className="inline-block w-3 h-3 rounded-full bg-yellow-500 mr-3"></span>
 							{userBal ? userBal[1] : '...'}
 						</div>
-						<div className="bg-zinc-500/50 px-3 py-1 rounded-r-full">
+						<div className="bg-zinc-500/50 px-3 py-1.5 rounded-r-lg">
 							<span className="inline-block w-3 h-3 rounded-full bg-blue-500 mr-3"></span>
 							{userBal ? userBal[0] : '...'}
 						</div>
 					</div>
-					<button
-						className="px-4 py-1 rounded-full bg-zinc-500/50 ml-3 font-semibold text-sm"
-						onClick={handleLogout}
-					>
+					<button className="btn" onClick={openExchange}>
+						Exchange
+					</button>
+					<button className="btn" onClick={handleLogout}>
 						Log Out
 					</button>
 				</div>
