@@ -42,7 +42,9 @@ export default async function handler(req, res) {
 			const tokens = []
 			const initGameTok = ['0.0000 RX']
 
-			tokens.push(balance[0].length > 0 ? balance[0] : '0.0000 RA')
+			tokens.push(
+				balance[0] && balance[0].length > 0 ? balance[0] : '0.0000 RA'
+			)
 			// tokens.push('0.0000 RA')
 			resources[1].rows.length > 0
 				? resources[1].rows[0].resource_tokens.forEach((token) =>
