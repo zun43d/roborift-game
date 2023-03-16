@@ -111,12 +111,17 @@ export default function Navbar({ ual }) {
 							</div>
 						</div>
 						<hr className="border-zinc-700 my-4" />
-						<button
-							className="relative left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-zinc-500/50 font-semibold text-sm"
-							onClick={handleLogout}
-						>
-							Log Out
-						</button>
+						<div>
+							<button className="btn" onClick={open}>
+								Exchange
+							</button>
+							<button
+								className="relative left-1/2 -translate-x-1/2 px-6 py-2 rounded-lg bg-zinc-500/50 font-semibold text-sm"
+								onClick={handleLogout}
+							>
+								Log Out
+							</button>
+						</div>
 					</div>
 				</div>
 
