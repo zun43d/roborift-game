@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime'
 import '@fontsource/cinzel/800.css'
 import '@fontsource/merriweather'
 import '@fontsource/inter'
+import '@fontsource/orbitron'
 import { MantineProvider } from '@mantine/core'
 import { ModalsProvider } from '@mantine/modals'
 

@@ -60,7 +60,13 @@ export default function Navbar({ ual }) {
 						/>
 					</Link>
 					<Link href="/lobby/staking">Staking Rewards</Link>
-					<Link href="https://utility.roborift.world/">Utilities</Link>
+					<Link href="/lobby/shop">Shop</Link>
+					<Link
+						href="https://utility.roborift.world/"
+						className="hidden sm:block"
+					>
+						Utilities
+					</Link>
 				</nav>
 				<div className="hidden md:flex">
 					<div className="flex gap-0.5">

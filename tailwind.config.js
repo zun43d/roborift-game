@@ -17,6 +17,7 @@ module.exports = {
 					...defaultTheme.fontFamily.sans,
 				],
 				cinzel: ['Cinzel', 'Inter', ...defaultTheme.fontFamily.sans],
+				orbitron: ['Orbitron', 'Inter', ...defaultTheme.fontFamily.sans],
 			},
 			backgroundImage: {
 				main: "url('/rr-background.png')",

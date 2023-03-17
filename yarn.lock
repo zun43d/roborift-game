@@ -297,6 +297,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/merriweather/-/merriweather-4.5.14.tgz#17b634fe3892e25f345954fe34df252730b96080"
   integrity sha512-kDMIAokOvE9bYf+CDmEWzV3xtR8cRJlw/BipjhxqD9MIRZfU348cZ8xhHhmPXmxRiEjZLor4xxHXqps7eCvGQg==
 
+"@fontsource/orbitron@^4.5.11":
+  version "4.5.11"
+  resolved "https://registry.yarnpkg.com/@fontsource/orbitron/-/orbitron-4.5.11.tgz#b5a451ee09d7f4cf8da1ece7832eef5dce71d158"
+  integrity sha512-OClxk3btSUtbvH+LKk3JSO95Ly88lJZjODRgUY2yLVOVBhR/i7u3xlj9j0SUmIYQAFn21jrMX5+zbS5IfIP9YQ==
+
 "@greymass/eosio@^0.6.0":
   version "0.6.9"
   resolved "https://registry.yarnpkg.com/@greymass/eosio/-/eosio-0.6.9.tgz#e5475dfb6f1507da6ec2f9f0065e19684e8d4b70"
