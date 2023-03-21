@@ -257,7 +257,10 @@ export default function Staking({ ual }) {
 														? tool.template.immutable_data.name
 														: 'No Name'}
 												</p>
-												{tool.schema.schema_name !== 'servers' && (
+												{(tool.schema.schema_name !== 'servers' ||
+													tool.schema.schema_name !== 'flashempty' ||
+													tool.schema.schema_name !== 'data' ||
+													tool.schema.schema_name !== 'packs') && (
 													<button
 														className="bg-gray-500 hover:bg-gray-700 rounded-lg py-2 px-4 w-full duration-300"
 														onClick={() => handleStake(tool.asset_id)}
