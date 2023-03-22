@@ -1,8 +1,8 @@
 import { JsonRpc } from 'eosjs'
 import fetch from 'node-fetch'
 
-// const adminWallet = 'roborftadmin' // mainnet
-const adminWallet = 'thatdevthere' // testnet
+const adminWallet = 'roborftadmin' // mainnet
+// const adminWallet = 'thatdevthere' // testnet
 
 export default async function handler(req, res) {
 	if (req.method == 'GET') {
